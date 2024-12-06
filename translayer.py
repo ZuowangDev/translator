@@ -22,9 +22,12 @@ def process_value_csv(str):
     with open(str, 'r') as csvfile:
         reader = csvfile.readlines()
         # read the csv file through reading lines
+        i = 0
         for row in reader:
-            item = row.rstrip('\n').split('\t')
+            item = row.rstrip('\n').split(',')
             translayer_dict[(int(item[0]), int(item[1]))] = (int(item[2]), int(item[3])) if (item[2] != '' and item[3] != '') else ('', '')
+            print(f"process row {i}")
+            i += 1
     return translayer_dict
 
 def replace_value(num_pairs, transvalue_dict):
